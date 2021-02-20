@@ -5,8 +5,8 @@ export const todoReducer = (state, action) => {
     case "DELETE_TODO":
       return state.filter((el) => el.id !== action.id);
     case "TOGGOLE_EDIT_STATE": {
-      console.log(
-        state.map((el) => (el.id === action.id ? (el.isEditing = true) : el))
+      return state.map((el) =>
+        el.id === action.id ? { ...el, isEditing: true } : el
       );
     }
     case "MARK_COMPLETE":

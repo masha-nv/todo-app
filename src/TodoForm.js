@@ -3,7 +3,7 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import { withStyles } from "@material-ui/styles";
 import Paper from "@material-ui/core/Paper";
-import { TodoContext } from "./contexts/TodoContext";
+import { DispatchContext } from "./contexts/TodoContext";
 
 const styles = {
   root: {
@@ -18,8 +18,8 @@ const styles = {
   },
 };
 
-const TodoForm = ({ classes, addTodo }) => {
-  const { contextTodos, dispatch } = useContext(TodoContext);
+const TodoForm = ({ classes }) => {
+  const dispatch = useContext(DispatchContext);
   const [value, setValue] = useState("");
   const handleChange = (e) => {
     setValue(e.target.value);

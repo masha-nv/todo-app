@@ -2,6 +2,7 @@ import React, { createContext, useReducer, useEffect } from "react";
 import { todoReducer } from "./../reducers/todoReducer";
 
 export const TodoContext = createContext();
+export const DispatchContext = createContext();
 
 export const TodoContextProvider = (props) => {
   const [todos, dispatch] = useReducer(
@@ -12,10 +13,10 @@ export const TodoContextProvider = (props) => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
   return (
-    <TodoContext.Provider value={{ todos, dispatch }}>
-      {props.children}
+    <TodoContext.Provider value={todos}>
+      <DispatchContext.Provider value={dispatch}>
+        {props.children}
+      </DispatchContext.Provider>
     </TodoContext.Provider>
   );
 };
-
-export default TodoContextProvider;

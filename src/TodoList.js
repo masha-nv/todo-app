@@ -8,10 +8,11 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import Checkbox from "@material-ui/core/Checkbox";
 import EditForm from "./EditForm";
-import { TodoContext } from "./contexts/TodoContext";
+import { TodoContext, DispatchContext } from "./contexts/TodoContext";
 
 const TodoList = () => {
-  const { todos, dispatch } = useContext(TodoContext);
+  const todos = useContext(TodoContext);
+  const dispatch = useContext(DispatchContext);
   return (
     <Paper>
       {todos.map((t) =>

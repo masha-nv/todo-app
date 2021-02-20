@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import Input from "@material-ui/core/Input";
 import useForm from "./hooks/useForm";
-import { TodoContext } from "./contexts/TodoContext";
+import { DispatchContext } from "./contexts/TodoContext";
 
-const EditForm = ({ todo, handleUpdateTodo }) => {
+const EditForm = ({ todo }) => {
   const { input, handleChangeInput } = useForm(todo.task);
+  const dispatch = useContext(DispatchContext);
 
-  const { todos, dispatch } = useContext(TodoContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "UPDATE_TODO", theTodo: { task: input, id: todo.id } });
